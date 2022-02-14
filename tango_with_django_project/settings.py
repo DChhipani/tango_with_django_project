@@ -74,9 +74,9 @@ TEMPLATES = [
 
 STATICFILES_DIRS = [STATIC_DIR, ]
 STATIC_URL = '/static/'
-
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+LOGIN_URL = 'rango:login'
 
 WSGI_APPLICATION = 'tango_with_django_project.wsgi.application'
 
@@ -127,5 +127,29 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+# Password Hashing
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+]
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        #'OPTIONS' : { 'min_length': 6, }
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
 
 
